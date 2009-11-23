@@ -12,7 +12,7 @@
             
             $(function() {
                 $('.s3').thead();
-                $('table').each(function() {
+                $('tbody').each(function() {
                     $(this).find('tr:even').addClass('even');
                 });
             });
@@ -22,12 +22,12 @@
     </head>
     <body>
         <div>
-            <table class="s1 jquery-thead">
+            <table class="s1 jquery-thead" width="666">
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                        <th>Column 3</th>
+                        <th width="30%">Column 1</th>
+                        <th width="30%">Column 2</th>
+                        <th width="40%">Column 3</th>
                     </tr>
                 </thead>
                 <tbody>
