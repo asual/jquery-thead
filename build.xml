@@ -85,6 +85,11 @@
     </target>
     
     <target name="samples">
+        <echo message="Building samples..." />
+        <delete>
+            <fileset dir="${samples.dir}" includes="${name}-\d.\d+.min.js" />
+        </delete>
+        <copy file="${dist.dir}/${name}-${version}.min.js" todir="${samples.dir}" overwrite="true" />
     </target>
     
 </project>

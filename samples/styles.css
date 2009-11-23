@@ -1,0 +1,71 @@
+body {
+    font: 14px Arial, "Helvetica Neue", sans-serif;
+    margin: 20px;
+    padding: 0;
+    background: #fff;
+    color: #000;
+}
+
+div {
+    margin: 0 0 20px;    
+}
+
+.s1 {
+    background: #fff;
+}
+
+.s1 th {
+    background: #666;
+    color: #fff;
+    padding: 2px 4px;
+}
+
+.s1 td {
+    background: #ccc;
+    padding: 2px 4px;
+}
+
+.s2 {
+    border-collapse: collapse;
+    width: 666px;
+}
+
+.s2 th {
+    background: #ccc;
+    text-align: left;
+    padding: 2px 4px;
+    border: 1px solid #999;
+}
+
+.s2 td {
+    background: #fff;
+    padding: 2px 4px;
+    border: 1px solid #999;
+}
+
+.s2 .even td {
+    background: #eee;
+}
+
+.s3 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.s3 th {
+    background: #ccc;
+    text-align: left;
+    padding: 2px 4px;
+    border: 1px solid #fff;
+}
+
+.s3 td {
+    background: #fff;
+    padding: 2px 4px;
+    border: 1px solid #fff;
+}
+
+.s3 .even td {
+    background: #eee;
+}
