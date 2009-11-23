@@ -6,7 +6,7 @@
  * Dual licensed under the MIT and GPL licenses.
  * http://docs.jquery.com/License
  *
- * Date: 2009-10-06 01:02:55 +0300 (Tue, 06 Oct 2009)
+ * Date: 2009-11-23 10:01:20 +0200 (Mon, 23 Nov 2009)
  */
 (function($) {
 	
@@ -25,20 +25,21 @@
 				var s = 'thead tr *', 
 					t = $('table.jquery-thead, table', this.parent().prev()).get(0), 
 					c = $('caption', t),
+    				collapse = $(t).css('border-collapse') == 'collapse',
 					ths = $(s, t),
 					offset = _d.scrollTop() - $(t).offset().top + _magicNumber;
 				if (c.length) {
 					offset -= c.get(0).clientHeight;
 				}
 				$(s, this).each(function(index) {
-					var c = ths.eq(index).get(0),
-						w = $(c).css('width');
-					$(this).css('width', w != 'auto' ? w : c.clientWidth - parseInt($(c).css('padding-left')) - parseInt($(c).css('padding-right')) + 'px');
+					var th = ths.eq(index).get(0),
+						w = $(th).css('width');
+					$(this).css('width', w != 'auto' ? w : th.clientWidth - parseInt($(th).css('padding-left')) - parseInt($(th).css('padding-right')) + 'px');
 				});
 				$(this).css({
 					display: (offset > _magicNumber && offset < t.clientHeight - $('tr:last', t).height() - _magicNumber*2) ? $(t).css('display') : 'none',
 					left: $(t).offset().left - _d.scrollLeft() + 'px',
-					width: t.clientWidth
+					width: $(t).width() + (collapse ? 0 : $(t).attr(CELLPADDING))
 				});
 			});
 		},
@@ -69,12 +70,16 @@
     		collection.each(function() {
         		var table, parent = $(this).parent(), thead = $('thead', this);
         		if (thead.length) {
-        			var cs = $(this).attr(CELLSPACING);
-        			table = $('<table />').attr(CLAZZ, $(this).attr(CLAZZ)).attr(CELLPADDING, $(this).attr(CELLPADDING)).attr(CELLSPACING, cs)
-    					.css({position: 'fixed', top: 0}).appendTo($('<' + parent.get(0).tagName + '/>')
-    					.attr(CLAZZ, parent.attr(CLAZZ)).insertAfter(parent));
-	        		_tables.push(table.append($(thead).clone(true))
-                        .append(cs > 0 ? '' : '<tbody><tr><td colspan="' + $('tr *', thead).size() + '" style="height:0;padding:0;" /></tr></tbody>'));
+        			console.info()
+        			var clazz = $(this).attr(CLAZZ),
+        				cp = $(this).attr(CELLPADDING),
+        				cs = $(this).attr(CELLSPACING),
+        				table = $('<table />').attr(CLAZZ, clazz)
+        					.attr(CELLPADDING, cp ? cp : 1)
+        					.attr(CELLSPACING, cs ? cs : 2)
+							.css({position: 'fixed', top: 0}).appendTo($('<' + parent.get(0).tagName + '/>')
+									.attr(CLAZZ, parent.attr(CLAZZ)).insertAfter(parent));
+	        		_tables.push(table.append($(thead).clone(true)));
         		}
         	});
     	}
