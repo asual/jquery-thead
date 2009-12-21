@@ -5,72 +5,79 @@ body {
     background: #fff;
     color: #000;
 }
-
 div {
     margin: 0 0 20px;    
 }
-
-.s1 {
-    background: #fff;
+.sample { 
+    margin: 0 0 26px;
 }
-
-.s1 th {
-    background: #666;
-    color: #fff;
+.sample p {
+    padding: 0 0 6px;
+}
+.sample1 {
+    background: #FFF;
+}
+.sample1 th {
+    background: #121C28;
+    color: #FFF;
     padding: 2px 4px;
     text-align: left;
 }
-
-.s1 td {
-    background: #ddd;
+.sample1 td {
+    background: #DDE5F0;
     padding: 2px 4px;
 }
-
-.s1 .even td {
-    background: #eee;
+.sample1 .even td {
+    background: #FFF;
 }
-
-.s2 {
+.sample2 {
     border-collapse: collapse;
-    width: 666px;
+    width: 750px;
 }
-
-.s2 th {
-    background: #ccc;
+.sample2 caption {
+    text-align: left;
+    margin: 0;
+    padding: 2px 2px 8px;
+    font-weight: bold;
+}
+.sample2 th {
+    background: #0F67AE;
     text-align: left;
     padding: 2px 4px;
-    border: 1px solid #999;
+    border: 1px solid #121C28;
 }
-
-.s2 td {
-    background: #eee;
+.sample2 th a {
+    color: #FFF;
+}
+.sample2 th a:hover {
+    color: #DDE5F0;
+    background: none;
+    text-decoration: underline;
+}
+.sample2 td {
+    background: #DDE5F0;
     padding: 2px 4px;
-    border: 1px solid #999;
+    border: 1px solid #121C28;
 }
-
-.s2 .even td {
-    background: #fff;
+.sample2 .even td {
+    background: #FFF;
 }
-
-.s3 {
+.sample3 {
     border-collapse: collapse;
-    border-spacing: 0;
     width: 100%;
 }
-
-.s3 th {
-    background: #ccc;
+.sample3 th {
+    background: #121C28;
+    color: #FFF;
     text-align: left;
     padding: 2px 4px;
-    border: 1px solid #fff;
+    border: 1px solid #FFF;
 }
-
-.s3 td {
-    background: #eee;
+.sample3 td {
+    background: #DDE5F0;
     padding: 2px 4px;
-    border: 1px solid #fff;
+    border: 1px solid #FFF;
 }
-
-.s3 .even td {
-    background: #fff;
+.sample3 .even td {
+    background: #FFF;
 }

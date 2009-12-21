@@ -11,23 +11,30 @@
         /*<![CDATA[*/
             
             $(function() {
-                $('.s3').thead();
+                $('.sample2 th a').live('click', function() {
+                    var container = $($('.sample2').get(0)).parent();
+                    container.html(container.html().replace(/(\d{2,14})*(<\/(a|td)>)/g, ' ' + (new Date()).getTime() + '$2'));    
+                    return false;
+                });
+                $('.sample3').thead();
                 $('tbody').each(function() {
                     $(this).find('tr:even').addClass('even');
                 });
             });
-                        
+                                    
         /*]]>*/
         </script>
     </head>
     <body>
-        <div>
-            <table class="s1 jquery-thead" width="666">
+        <div class="sample">
+            <h2>Sample 1</h2>
+            <p>Simple table with default cellpadding and cellspacing, width attribute and percentage based column width. The plugin is applied using the "jquery-thead" CSS class.</p>
+            <table class="sample1 jquery-thead" width="752">
                 <thead>
                     <tr>
-                        <th width="30%">Column 1</th>
-                        <th width="30%">Column 2</th>
-                        <th width="40%">Column 3</th>
+                        <th style="width: 30%;">Column 1</th>
+                        <th style="width: 30%;">Column 2</th>
+                        <th style="width: 40%;">Column 3</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -144,13 +151,16 @@
                 </tbody>
             </table>
         </div>
-        <div class="jquery-thead">
-            <table class="s2">
+        <div class="sample jquery-thead">
+            <h2>Sample 2</h2>
+            <p>Standard table with auto sized columns, caption and CSS formatting. The "jquery-thead" class is added to the parent DIV container which is appropriate for cases where the whole table should be reloaded using JavaScript.</p>
+            <table class="sample2">
+                <caption>Click on the header to reload the table</caption>
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                        <th>Column 3</th>
+                        <th><a href="#">Column 1</a></th>
+                        <th><a href="#">Column 2</a></th>
+                        <th><a href="#">Column 3</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -267,12 +277,14 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <table class="s3">
+        <div class="sample">
+            <h2>Sample 3</h2>
+            <p>Standard table with partially fixed sized columns and CSS formatting. The plugin is applied with the JavaScript API using the "$('sample3').thead()" call.</p>
+            <table class="sample3">
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
+                        <th style="width: 200px;">Column 1</th>
+                        <th style="width: 200px;">Column 2</th>
                         <th>Column 3</th>
                     </tr>
                 </thead>
