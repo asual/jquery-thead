@@ -6,7 +6,7 @@
  * Dual licensed under the MIT and GPL licenses.
  * http://docs.jquery.com/License
  *
- * Date: 2009-11-23 15:48:11 +0200 (Mon, 23 Nov 2009)
+ * Date: 2009-12-21 09:54:26 +0200 (Mon, 21 Dec 2009)
  */
 (function($) {
     
@@ -42,25 +42,29 @@
                     width: $(t).width()
                 });
             });
-        },
-        _resize = function() {
-            if (_interval == null) {
-                _interval = setInterval(function() {
-                    if (_interval) {
-                        _interval = clearInterval(_interval);
-                    }
-                    _scroll();
-                }, 50);
-            }
-        },
-        _init = function() {
-            $('table.jquery-thead, .jquery-thead table').thead();
         };
     
     $(function() {
         if (_supported) {
-            _w.scroll(_scroll).resize(_resize);
-            _init();
+            _w.scroll(_scroll).resize(function() {
+                if (_interval == null) {
+                    _interval = setInterval(function() {
+                        if (_interval) {
+                            _interval = clearInterval(_interval);
+                        }
+                        _scroll();
+                    }, 50);
+                }
+            });
+            setInterval(function() {
+            	$(_tables).each(function() {
+            	    var base = $('thead', $('table.jquery-thead, table', this.parent().prev()).get(0));
+            	    if (this.html() != base.html()) {
+            	        this.html(base.html());
+            	    }
+            	});
+            }, 250);
+            $('table.jquery-thead, .jquery-thead table').thead();
         }
     });
     
