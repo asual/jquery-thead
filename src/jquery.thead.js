@@ -2,7 +2,7 @@
  * jQuery THead Plugin v${version}
  * http://www.asual.com/jquery/thead/
  *
- * Copyright (c) 2009 Rostislav Hristov
+ * Copyright (c) 2009-2010 Rostislav Hristov
  * Dual licensed under the MIT and GPL licenses.
  * http://docs.jquery.com/License
  *
