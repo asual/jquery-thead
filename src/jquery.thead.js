@@ -1,5 +1,5 @@
 /*
- * jQuery THead Plugin v${version}
+ * jQuery Thead Plugin v${version}
  * http://www.asual.com/jquery/thead/
  *
  * Copyright (c) 2009-2010 Rostislav Hristov
@@ -20,9 +20,13 @@
         _magicNumber = 4,
         _supported = !($.browser.msie && parseFloat(_agent.substr(_agent.indexOf('MSIE') + _magicNumber)) < 7),
         _interval = null,
+        _parseInt = function(value) {
+            var result = parseInt(value, 10);
+            return isNaN(result) ? 0 : result;
+        },
         _scroll = function() {
             $(_tables).each(function() {
-                var s = 'thead tr *', 
+                var w, s = 'thead tr th, thead tr td', 
                     t = $('table.jquery-thead, table', this.parent().prev()).get(0), 
                     c = $('caption', t),
                     collapse = $(t).css('border-collapse') == 'collapse',
@@ -32,14 +36,14 @@
                     offset -= c.get(0).clientHeight;
                 }
                 $(s, this).each(function(index) {
-                    var th = ths.eq(index).get(0),
-                        w = $(th).css('width');
-                    $(this).css('width', w != 'auto' ? w : th.clientWidth - parseInt($(th).css('padding-left')) - parseInt($(th).css('padding-right')) + 'px');
+                    var th = ths.eq(index).get(0);
+                    w = $(th).css('width');
+                    $(this).css('width', w != 'auto' ? w : th.clientWidth - _parseInt($(th).css('padding-left')) - _parseInt($(th).css('padding-right')) + 'px');
                 });
                 $(this).css({
                     display: (offset > _magicNumber && offset < t.clientHeight - $('tr:last', t).height() - _magicNumber*2) ? $(t).css('display') : 'none',
                     left: $(t).offset().left - _d.scrollLeft() + 'px',
-                    width: $(t).width()
+                    width: $(t).get(0).offsetWidth
                 });
             });
         };
@@ -56,17 +60,25 @@
                     }, 50);
                 }
             });
-            setInterval(function() {
-            	$(_tables).each(function() {
-            	    var base = $('thead', $('table.jquery-thead, table', this.parent().prev()).get(0));
-            	    if (this.html() != base.html()) {
-            	        this.html(base.html());
-            	    }
-            	});
-            }, 250);
             $('table.jquery-thead, .jquery-thead table').thead();
         }
     });
+    
+    $.thead = (function () {
+        return {
+            update: function() {
+                $(_tables).each(function() {
+                    var base = $('thead', $('table.jquery-thead, table', this.parent().prev()).get(0));
+                    var local = $('thead', this);
+                    if (local.html() != base.html()) {
+                        local.parent().append(base.clone(true));
+                        local.remove();
+                        _scroll();
+                    }
+                });
+            }
+        }
+    })();
     
     $.fn.thead = function() {
         if (_supported) {
