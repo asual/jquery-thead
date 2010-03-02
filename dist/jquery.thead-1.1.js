@@ -6,7 +6,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://jquery.org/license
  *
- * Date: 2010-03-02 09:34:29 +0200 (Tue, 02 Mar 2010)
+ * Date: 2010-03-02 15:00:43 +0200 (Tue, 02 Mar 2010)
  */
 (function($) {
     
@@ -27,7 +27,7 @@
         _scroll = function() {
             $(_tables).each(function() {
                 var w, s = 'thead tr th, thead tr td', 
-                    t = $('table.jquery-thead, table', this.parent().prev()).get(0), 
+                    t = $('table', this.parent().prev()).get(0), 
                     c = $('caption', t),
                     collapse = $(t).css('border-collapse') == 'collapse',
                     ths = $(s, t),
@@ -60,7 +60,7 @@
                     }, 50);
                 }
             });
-            $('table.jquery-thead, .jquery-thead table').thead();
+            $('.jquery-thead').thead();
         }
     });
     
@@ -82,19 +82,17 @@
     
     $.fn.thead = function() {
         if (_supported) {
-            var collection = $(this);
-            collection.each(function() {
-                var table, parent = $(this).parent(), thead = $('thead', this);
+            $(this).each(function() {
+                var table = this.tagName.toLowerCase() == 'table' ? $(this) : $('table', this), parent = table.parent(), thead = $('thead', table);
                 if (thead.length) {
-                    var clazz = $(this).attr(CLAZZ),
-                        cp = $(this).attr(CELLPADDING),
-                        cs = $(this).attr(CELLSPACING),
-                        table = $('<table />').attr(CLAZZ, clazz)
+                    var clazz = table.attr(CLAZZ),
+                        cp = table.attr(CELLPADDING),
+                        cs = table.attr(CELLSPACING);
+                    _tables.push($('<table />').attr(CLAZZ, clazz)
                             .attr(CELLPADDING, cp ? cp : 1)
                             .attr(CELLSPACING, cs ? cs : 2)
                             .css({position: 'fixed', top: 0}).appendTo($('<' + parent.get(0).tagName + '/>')
-                                    .attr(CLAZZ, parent.attr(CLAZZ)).insertAfter(parent));
-                    _tables.push(table.append($(thead).clone(true)));
+                                    .attr(CLAZZ, parent.attr(CLAZZ)).insertAfter(parent)).append($(thead).clone(true)));
                 }
             });
         }
