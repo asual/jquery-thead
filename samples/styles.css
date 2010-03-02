@@ -1,12 +1,18 @@
 body {
     font: 14px Arial, "Helvetica Neue", sans-serif;
-    margin: 20px;
+    margin: 20px 20px 400px;
     padding: 0;
     background: #fff;
     color: #000;
 }
 div {
     margin: 0 0 20px;    
+}
+a {
+    color: #0F67AE;
+}
+a:hover {
+    color: #000;
 }
 .sample { 
     margin: 0 0 26px;
@@ -80,4 +86,27 @@ div {
 }
 .sample3 .even td {
     background: #FFF;
+}
+.sample4 {
+    border-collapse: collapse;
+    width: 100%;
+}
+.sample4 th {
+    background: #121C28;
+    color: #FFF;
+    text-align: left;
+    padding: 2px 4px;
+    border: 1px solid #FFF;
+}
+.sample4 td {
+    background: #DDE5F0;
+    padding: 2px 4px;
+    border: 1px solid #FFF;
+}
+.sample4 .even td {
+    background: #FFF;
+}
+.sample4 tfoot td {
+    background: #FFF;
+    padding: 10px 4px;
 }
