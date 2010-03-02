@@ -3,10 +3,10 @@
  * http://www.asual.com/jquery/thead/
  *
  * Copyright (c) 2009-2010 Rostislav Hristov
- * Dual licensed under the MIT and GPL licenses.
- * http://docs.jquery.com/License
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
  *
- * Date: 2010-01-26 22:42:57 +0200 (Tue, 26 Jan 2010)
+ * Date: 2010-03-02 09:34:29 +0200 (Tue, 02 Mar 2010)
  */
 (function($) {
     
