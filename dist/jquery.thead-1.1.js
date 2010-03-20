@@ -6,7 +6,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://jquery.org/license
  *
- * Date: 2010-03-02 15:00:43 +0200 (Tue, 02 Mar 2010)
+ * Date: 2010-03-20 22:17:21 +0200 (Sat, 20 Mar 2010)
  */
 (function($) {
     
@@ -51,7 +51,7 @@
     $(function() {
         if (_supported) {
             _w.scroll(_scroll).resize(function() {
-                if (_interval == null) {
+                if (_interval === null) {
                     _interval = setInterval(function() {
                         if (_interval) {
                             _interval = clearInterval(_interval);
@@ -77,7 +77,7 @@
                     }
                 });
             }
-        }
+        };
     })();
     
     $.fn.thead = function() {
