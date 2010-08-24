@@ -60,6 +60,9 @@
                     }, 50);
                 }
             });
+            $(document).ajaxComplete(function() {
+                $.thead.update();
+            });
             $('.jquery-thead').thead();
         }
     });
@@ -83,7 +86,9 @@
     $.fn.thead = function() {
         if (_supported) {
             $(this).each(function() {
-                var table = this.tagName.toLowerCase() == 'table' ? $(this) : $('table', this), parent = table.parent(), thead = $('thead', table);
+                var table = this.tagName.toLowerCase() == 'table' ? $(this) : $('table', this), 
+                    parent = table.parent(), 
+                    thead = $('thead', table);
                 if (thead.length) {
                     var clazz = table.attr(CLAZZ),
                         cp = table.attr(CELLPADDING),
