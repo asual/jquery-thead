@@ -6,7 +6,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://jquery.org/license
  *
- * Date: 2010-03-20 22:17:21 +0200 (Sat, 20 Mar 2010)
+ * Date: 2010-08-18 16:41:30 +0300 (Wed, 18 Aug 2010)
  */
 (function($) {
     
@@ -60,6 +60,9 @@
                     }, 50);
                 }
             });
+            $(document).ajaxComplete(function() {
+                $.thead.update();
+            });
             $('.jquery-thead').thead();
         }
     });
@@ -83,7 +86,9 @@
     $.fn.thead = function() {
         if (_supported) {
             $(this).each(function() {
-                var table = this.tagName.toLowerCase() == 'table' ? $(this) : $('table', this), parent = table.parent(), thead = $('thead', table);
+                var table = this.tagName.toLowerCase() == 'table' ? $(this) : $('table', this), 
+                    parent = table.parent(), 
+                    thead = $('thead', table);
                 if (thead.length) {
                     var clazz = table.attr(CLAZZ),
                         cp = table.attr(CELLPADDING),

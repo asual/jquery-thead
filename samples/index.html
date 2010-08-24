@@ -1,14 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- saved from url=(0014)about:internet -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <title>jQuery Thead Samples</title>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <link type="text/css" href="styles.css" rel="stylesheet" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link type="text/css" href="styles.css" rel="stylesheet">
         <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="jquery.thead-1.1.min.js"></script>
         <script type="text/javascript">
-        /*<![CDATA[*/
             
             $(function() {
 
@@ -26,11 +24,9 @@
                 // Enables the fourth sample                
                 $('.sample:has(.sample4)').thead();
 
-                // Enables the fourth sample                
+                // Adds a reloading functionality to the fourth sample                
                 $('.sample4 tfoot a').live('click', function() {
-                    $('.sample4:first').load('table.php?ts=' + (new Date()).getTime(), function() {
-                        $.thead.update();
-                    });
+                    $('.sample4:first').load('table.php?ts=' + (new Date()).getTime());
                     return false;
                 });
                 
@@ -41,7 +37,6 @@
                 
             });
                                     
-        /*]]>*/
         </script>
     </head>
     <body>
