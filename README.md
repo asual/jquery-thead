@@ -1,12 +1,10 @@
-jQuery Thead
-============
+# jQuery Thead
 
 The jQuery Thead plugin simplifies the navigation in tables that have lots of rows and 
 require scrolling. It enforces the visibility of the table header and ensures that the 
 column names are always accessible for the user.
 
-Usage 
------
+## Usage 
 
 The plugin is automatically activated for every table that uses the "jquery-thead" class:
 
@@ -21,4 +19,15 @@ dynamically replaced:
 
 The plugin can be applied with JavaScript using the following:
 
-    $('sample3').thead();
+    $('table').thead();
+
+## Changes
+
+### 09/26/2010 - jQuery Thead 1.1
+
+- New update method.
+- New global Ajax event listener that forces updating.
+
+### 12/23/2009 - jQuery Thead 1.0
+
+Initial release.
