@@ -51,7 +51,7 @@
     $(function() {
         if (_supported) {
             _w.scroll(_scroll).resize(function() {
-                if (_interval === null) {
+                if (!_interval) {
                     _interval = setInterval(function() {
                         if (_interval) {
                             _interval = clearInterval(_interval);
