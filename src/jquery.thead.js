@@ -19,7 +19,6 @@
         _tables = [], 
         _magicNumber = 4,
         _supported = !($.browser.msie && parseFloat(_agent.substr(_agent.indexOf('MSIE') + _magicNumber)) < 7),
-        _boxModel = $.support.boxModel,
         _interval = null,
         _parseInt = function(value) {
             var result = parseInt(value, 10);
@@ -46,7 +45,7 @@
                     left: $(t).offset().left - _d.scrollLeft() + 'px',
                     width: $(t).get(0).offsetWidth
                 });
-                if (!_boxModel) {
+                if (!$.support.boxModel) {
                     $(this).css({
                         top: _d.scrollTop()
                     });
@@ -102,7 +101,7 @@
                     _tables.push($('<table />').attr(CLAZZ, clazz)
                             .attr(CELLPADDING, cp ? cp : 1)
                             .attr(CELLSPACING, cs ? cs : 2)
-                            .css({position: _boxModel ? 'fixed' : 'absolute', top: 0}).appendTo($('<' + parent.get(0).tagName + '/>')
+                            .css({position: $.support.boxModel ? 'fixed' : 'absolute', top: 0}).appendTo($('<' + parent.get(0).tagName + '/>')
                                     .attr(CLAZZ, parent.attr(CLAZZ)).insertAfter(parent)).append($(thead).clone(true)));
                 }
             });
